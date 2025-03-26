@@ -33,14 +33,16 @@ namespace Forms
                 Label greetings = CreateLabel(new Size(300, 30), new Point(385, 200), "Приветствую вас в моей форме.");
                 Label click = CreateLabel(new Size(300, 30), new Point(350, 250), "Щелкните 2 раза чтобы увидеть автора формы.");
                 Label author = CreateLabel(new Size(400, 30), new Point(335, 200), "Автор формы:");
-                Label student = CreateLabel(new Size(400, 30), new Point(335, 230), "студент группы 3231302/20801 Димитриев М.Д.");
+                Label student = CreateLabel(new Size(400, 30), new Point(335, 230), "студент группы 3231302/20801");
+                Label surnameInitials = CreateLabel (new Size(400, 30), new Point(335, 260), "Димитриев М.Д.");
                 greetings.Visible = true;
                 click.Visible = true;
                 student.Visible = false;
                 author.Visible = false;
+                surnameInitials.Visible = false;
                 DoubleClick += (sender, e) =>
                 {
-                    ShowLabel(author, student);
+                    ShowLabel(author, student, surnameInitials);
                     HideLable(greetings, click);
                 };
                 MouseEnter += (sender, e) => _mouseOnForm = true;
@@ -56,10 +58,11 @@ namespace Forms
                 }
             }
 
-            private void ShowLabel(Label author, Label student)
+            private void ShowLabel(Label author, Label student, Label surnameInitials)
             {
                 if (_mouseOnForm) author.Visible = true;
                 if (_mouseOnForm) student.Visible = true;
+                if (_mouseOnForm) surnameInitials.Visible = true;
             }
 
             private void SetCommonParametres(Control element, Size size, Point position, string title) 
